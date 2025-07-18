@@ -1,0 +1,16 @@
+<% layout("/layouts/boilerplate") %>
+<h5 class="mt-3">Search results for "<%= q %>"</h5>
+
+<% if (!results || results.length === 0) { %>
+  <div class="alert alert-warning mt-3">No matches found.</div>
+<% } else { %>
+  <div class="list-group mt-3">
+    <% results.forEach(r => { %>
+      <a href="/listings/<%= r._id %>" class="list-group-item list-group-item-action">
+        <strong><%= r.title %></strong><br>
+        <%= r.location %><br>
+        <small><%= (r.description || '').substring(0,120) %>...</small>
+      </a>
+    <% }) %>
+  </div>
+<% } %>
